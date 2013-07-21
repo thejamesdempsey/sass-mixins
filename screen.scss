@@ -1,0 +1,140 @@
+
+/*---------------------------
+
+Clearfix Mixin
+
+-----------------------------*/
+
+
+%clearfix{
+	&:before, &:after{
+		content: "";
+		display: table;
+	}
+	&:after{
+		clear: both;
+	} 
+}
+
+
+.wrapper{
+	@extend %clearfix;
+}
+
+.row{
+	@extend %clearfix;
+}
+
+.site-head{
+	@extend %clearfix;
+}
+
+
+
+/*---------------------------
+
+Box Sizing Mixin
+
+-----------------------------*/
+
+
+
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; 
+     -moz-box-sizing: $box-model; 
+          box-sizing: $box-model;
+}
+
+
+*,
+*:after,
+*:before {
+  @include box-sizing(border-box);
+}
+
+/*---------------------------
+
+Border Radius Mixin
+
+-----------------------------*/
+
+
+
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	        border-radius: $radius;
+	
+	background-clip: padding-box;  
+}
+
+
+// Border Radius Usage
+
+.btn {
+  @include border-radius(5px);
+}
+
+
+
+/*---------------------------
+
+Center Align Block Element Mixin
+
+-----------------------------*/
+
+
+@mixin centered{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Center Align Block Element Usage
+
+
+.site-foot{
+  width: 800px;
+  @include centered;
+}
+
+
+
+/*---------------------------
+
+REM FONT SIZING MIXIN
+
+-----------------------------*/
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px; 
+  font-size: $sizeValue + rem;
+}
+
+p {
+  @include font-size(1.4);
+}
+
+h1{
+	@include font-size(3.6);
+}
+
+
+
+/*---------------------------
+
+VENDOR PREFIX MIXIN
+
+-----------------------------*/
+
+@mixin prefix($name, $argument) {
+	-webkit-#{$name}: #{$argument};
+       -moz-#{$name}: #{$argument};
+            #{$name}: #{$argument};
+}
+
+.shadow {
+  @include prefix(box-shadow, inset 0 0 10px #000000)
+}
+
+
