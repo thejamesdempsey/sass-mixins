@@ -1,41 +1,67 @@
+/*------------------------------------*\
+    $CONTENTS
+\*------------------------------------*/
 
-/*---------------------------
+
+/**
+ * CONTENTS...............It's right here!
+ * CLEARFIX...............Nicholas Gallagers Clearfix Hack
+ * BOX-SIZING.............Simple box model 
+ * BORDER-RADIUS..........Add Border Radius with one line of code
+ * CENTER ALIGN...........Center align block level element
+ * FONT SIZING............Font sizing in px and rem
+ * VENDOR PREFIX..........Add Vendo prefix to any 
+ */
+
+
+
+
+
+
+
+
+/*------------------------------------*\
 
 Clearfix Mixin
 
------------------------------*/
+\*------------------------------------*/
+
 
 
 %clearfix{
-	&:before, &:after{
+	&:before, &:after {
 		content: "";
 		display: table;
 	}
-	&:after{
+	&:after {
 		clear: both;
 	} 
 }
 
-
-.wrapper{
+.wrapper {
 	@extend %clearfix;
 }
 
-.row{
+.row {
 	@extend %clearfix;
 }
 
-.site-head{
+.site--head {
 	@extend %clearfix;
 }
 
 
 
-/*---------------------------
+
+
+
+/*------------------------------------*\
+
 
 Box Sizing Mixin
 
------------------------------*/
+\*------------------------------------*/
+
 
 
 
@@ -45,87 +71,102 @@ Box Sizing Mixin
           box-sizing: $box-model;
 }
 
-
 *,
 *:after,
 *:before {
-  @include box-sizing(border-box);
+	@include box-sizing(border-box);
 }
 
-/*---------------------------
+
+
+
+
+
+
+/*------------------------------------*\
+
 
 Border Radius Mixin
 
------------------------------*/
+\*------------------------------------*/
+
 
 
 
 
 @mixin border-radius($radius) {
+	background-clip: padding-box;  
 	-webkit-border-radius: $radius;
 	        border-radius: $radius;
-	
-	background-clip: padding-box;  
 }
-
-
-// Border Radius Usage
 
 .btn {
-  @include border-radius(5px);
+	@include border-radius(5px);
 }
 
 
 
-/*---------------------------
+
+
+
+/*------------------------------------*\
+
 
 Center Align Block Element Mixin
 
------------------------------*/
+\*------------------------------------*/
 
 
-@mixin centered{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+
+@mixin centered {
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
 }
 
-// Center Align Block Element Usage
-
-
-.site-foot{
-  width: 800px;
-  @include centered;
+.site--foot {
+	width: 800px;
+	@include centered;
 }
 
 
 
-/*---------------------------
+
+
+
+/*------------------------------------*\
+
 
 REM FONT SIZING MIXIN
 
------------------------------*/
+\*------------------------------------*/
+
 
 @mixin font-size($sizeValue: 1.6) {
-  font-size: ($sizeValue * 10) + px; 
-  font-size: $sizeValue + rem;
+	font-size: ($sizeValue * 10) + px; 
+	font-size: $sizeValue + rem;
 }
 
 p {
-  @include font-size(1.4);
+	@include font-size(1.4);
 }
 
-h1{
+h1 {
 	@include font-size(3.6);
 }
 
 
 
-/*---------------------------
+
+
+
+/*------------------------------------*\
+
 
 VENDOR PREFIX MIXIN
 
------------------------------*/
+\*------------------------------------*/
+
 
 @mixin prefix($name, $argument) {
 	-webkit-#{$name}: #{$argument};
@@ -134,7 +175,7 @@ VENDOR PREFIX MIXIN
 }
 
 .shadow {
-  @include prefix(box-shadow, inset 0 0 10px #000000)
+	@include prefix(box-shadow, inset 0 0 10px #f9f9f9);
 }
 
 
